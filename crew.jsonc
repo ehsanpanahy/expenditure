@@ -3,51 +3,34 @@
   "name": "expenditures",
 
   // Agents to include — each must have a matching agents/<name>.jsonc file
-  "agents": ["software_project_manager"],
+  "agents": ["software_project_manager", "software_architecture", "coder", "tester"],
 
   // Task definitions — executed in order for sequential process
   "tasks": [
     {
-      // Task identifier
-      "name": "create_a_highlevel_project_task",
-
-      // What the task should accomplish
-      // Use {placeholder} inputs here; crewai run prompts for missing values
-      "description": "Create a high-level project plan for: {project_idea}. Break it into phases and key tasks",
-
-      // Clear definition of what the output should look like
-      "expected_output": "A clear markdown project plan with phases, tasks, and priorities",
-
-      // Optional task guardrail(s) validate output before completion
-      // Use "guardrail" for one rule or "guardrails" for many
-      // Failed guardrails retry up to guardrail_max_retries times
-      // "guardrail": "Every factual claim needs context support.",
-      // "guardrails": [
-      //   "Every factual claim must be supported by context.",
-      //   "The answer must match the expected output format."
-      // ],
-      // "guardrail_max_retries": 2,
-
-      // Advanced task options:
-      // Docs: https://docs.crewai.com/concepts/tasks
-      // "type": "ConditionalTask",
-      // "condition": { "python": "my_project.conditions.should_run" },
-      // "output_json": { "python": "my_project.models.ReportOutput" },
-      // "output_pydantic": null,
-      // "response_model": null,
-      // "converter_cls": { "python": "my_project.converters.CustomConverter" },
-      // "markdown": false,
-      // "input_files": { "brief": "data/brief.txt" },
-      // "security_config": {},
-
-      // Which agent handles this task
+      "name": "plan_project",
+      "description": "Create a high-level project plan for: Personal Expenditure Management. Break it into phases and key tasks.",
+      "expected_output": "A clear markdown project plan with phases, tasks, and priorities.",
       "agent": "software_project_manager"
-
-      // "tools": [],
-      // "human_input": false,
-      // "async_execution": false
+    },
+    {
+      "name": "design_architecture",
+      "description": "Based on the project plan, design the system architecture, tech stack, and folder structure.",
+      "expected_output": "Architecture document with recommended stack, folder structure, and key components.",
+      "agent": "software_architecture"
+    },
+    {
+      "name": "implement_core",
+      "description": "Implement the core functionality based on the architecture.",
+      "expected_output": "Working code with comments and basic structure.",
+      "agent": "coder"
+    },
+    {
+      "name": "write_tests",
+      "description": "Write unit and integration tests for the implemented code.",
+      "expected_output": "Test suite and a short quality report.",
+      "agent": "tester"
     }
-
   ],
 
   // Execution process
@@ -59,7 +42,7 @@
   "verbose": true,
 
   // Enable crew memory — persists context and learnings across tasks
-  "memory": true,
+  "memory": false,
 
   // Automatically plan the execution strategy before running tasks
   // "planning": false,
