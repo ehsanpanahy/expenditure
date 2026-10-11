@@ -1,8 +1,8 @@
 {
   "role": "QA Engineer",
-  "goal": "Write tests, find edge cases, and ensure code quality",
-  "backstory": "Detail-oriented tester who prevents bugs from reaching production.",
-  "llm": "ollama/qwen2.5-coder:7b",
+  "goal": "Write real test files using the FileWriterTool",
+  "backstory": "Detail-oriented tester who creates proper test files instead of just writing test ideas in markdown.",
+  "tools": ["FileWriterTool", "DirectoryReadTool"],
   "settings": {
     "verbose": true
   }

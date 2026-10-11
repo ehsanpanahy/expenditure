@@ -11,13 +11,17 @@
       "name": "plan_project",
       "description": "Create a high-level project plan for: Personal Expenditure Management. Break it into phases and key tasks.",
       "expected_output": "A clear markdown project plan with phases, tasks, and priorities.",
-      "agent": "software_project_manager"
+      "agent": "software_project_manager",
+      "output_file": "personal_expenditure/project_management/01_project_plan.md",
+
     },
     {
       "name": "design_architecture",
       "description": "Based on the project plan, design the system architecture, tech stack, and folder structure.",
       "expected_output": "Architecture document with recommended stack, folder structure, and key components.",
-      "agent": "software_architecture"
+      "agent": "software_architecture",
+      "output_file": "personal_expenditure/architecture/02_architecture.md"
+
     },
     {
       "name": "implement_core",
